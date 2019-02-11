@@ -21,29 +21,25 @@ class FormularioViewController: UIViewController {
     var dataBase = Database.instance()
     
     private var tarefa: Tarefa?
-    private var atualuzar = false
+    private var atualizar = false
+    private var indice: Int = -1
     
     
-    func setTarefa(tarefa: Tarefa){
+    func setTarefa(indice: Int, tarefa: Tarefa){
         self.tarefa = tarefa
-        
-        atualuzar = true
+        self.indice = indice
+        self.atualizar = true
     }
 
     
     @IBAction func btAdicionar(_ sender: UIButton) {
         if let value = self.novoItem.text {
             if(value != ""){
-                
-                if(self.tarefa != nil){
-                    let tarefa = Tarefa(descricao: value, latitude: myMap.centerCoordinate.latitude, longitude: myMap.centerCoordinate.longitude)
-                    
+                let tarefa = Tarefa(descricao: value, latitude: myMap.centerCoordinate.latitude, longitude: myMap.centerCoordinate.longitude)
+                if ( atualizar ) {
+                    dataBase.edit(index: self.indice, value: tarefa)
+                } else {
                     dataBase.insert(add: tarefa)
-                }
-                else{
-                    let tarefa = Tarefa(descricao: value, latitude: myMap.centerCoordinate.latitude, longitude: myMap.centerCoordinate.longitude)
-                    
-                    dataBase.edit(index: <#T##Int#>, value: tarefa)
                 }
                 
                 UserDefaults.standard.set(value, forKey: value)
@@ -55,8 +51,12 @@ class FormularioViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         novoItem.text = tarefa?.descricao
+        var longitude = tarefa?.longitude ?? -8.0179
+        var latitude = tarefa?.latitude ?? -34.8889
+
         
         //imagemPin.
         //imagemPin.image = UIImage(named: "pin")
@@ -79,11 +79,15 @@ class FormularioViewController: UIViewController {
         // adding a annotation
         let point = MKPointAnnotation()
         point.title = "Local da tarefa"
-        point.coordinate = CLLocationCoordinate2D(latitude: -8.0179, longitude: -34.8889)
-        //myMap.addAnnotation(point)
+        point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        myMap.addAnnotation(point)
+        
+
         
         // start location updates
         locationManager.startUpdatingLocation()
+  
+        
         myMap.showsUserLocation = true
     }
     

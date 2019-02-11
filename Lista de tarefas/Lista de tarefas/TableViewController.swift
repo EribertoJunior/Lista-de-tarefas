@@ -63,7 +63,7 @@ class TableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        // let sender = (indexPath.row, dataBase.list()[indexPath.row])
-        self.performSegue(withIdentifier: "toFormulario", sender: dataBase.list()[indexPath.row])
+        self.performSegue(withIdentifier: "toFormulario", sender: indexPath.row)
         
         
     }
@@ -72,9 +72,9 @@ class TableViewController: UITableViewController {
         super.prepare(for: segue, sender: sender)
         
         if let formulario = segue.destination as? FormularioViewController,
-            let tarefa = sender as? Tarefa
+            let indice = sender as? Int
         {
-            formulario.setTarefa(tarefa: tarefa)
+            formulario.setTarefa(indice: indice, tarefa: dataBase.list()[indice])
         }
         
     }

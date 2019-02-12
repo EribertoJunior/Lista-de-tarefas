@@ -14,9 +14,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        var userDefaut =  UserDefaults.init()
+        
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
-        if let viewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as? OnboardingViewController {
-            present(viewController, animated: true, completion: nil)
+        if(!UserDefaults.init().bool(forKey: "olhou")){
+            if let viewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as? OnboardingViewController {
+                present(viewController, animated: true, completion: nil)
+            }
         }
     }
     

@@ -22,19 +22,11 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gc9-a3-DXq">
                         <rect key="frame" x="0.0" y="0.0" width="342" height="484"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p69-3D-utV">
-                        <rect key="frame" x="64" y="339" width="213.5" height="100"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <string key="text">Agora vai pegar esse negócio
-asdlfk haslk jd
-asdf</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Effect phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-Ax-3JI">
-                        <rect key="frame" x="28" y="225" width="290" height="33.5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Effect phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ne5-Ax-3JI">
+                        <rect key="frame" x="28" y="225" width="290" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="E7z-8e-Ubg"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -42,15 +34,18 @@ asdf</string>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="Gc9-a3-DXq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="trailing" constant="-342" id="A7d-ql-LKZ"/>
+                <constraint firstItem="Ne5-Ax-3JI" firstAttribute="centerY" secondItem="Gc9-a3-DXq" secondAttribute="centerY" id="ABR-3s-5ZY"/>
                 <constraint firstItem="Gc9-a3-DXq" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EtZ-uJ-ekf"/>
                 <constraint firstItem="Gc9-a3-DXq" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="Uvk-C8-5zB"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="Gc9-a3-DXq" secondAttribute="bottom" id="W64-kv-G9Z"/>
                 <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="Gc9-a3-DXq" secondAttribute="trailing" id="gi6-wx-DjW"/>
+                <constraint firstItem="Ne5-Ax-3JI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="j9v-b7-kBq"/>
+                <constraint firstAttribute="trailing" secondItem="Ne5-Ax-3JI" secondAttribute="trailing" constant="24" id="zDl-xQ-oeG"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="342" height="484"/>
             <connections>
-                <outlet property="descricaoLabel" destination="p69-3D-utV" id="Ig1-3w-xBh"/>
                 <outlet property="imagemDeFundo" destination="Gc9-a3-DXq" id="hxP-YP-sBl"/>
                 <outlet property="titulo" destination="Ne5-Ax-3JI" id="6XV-cF-wRe"/>
             </connections>

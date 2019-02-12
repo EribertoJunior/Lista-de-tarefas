@@ -18,12 +18,14 @@ class OnboardingViewController: UIViewController {
     
     // MARK: Datasource Variables
     var datasource = [
-        OnboardingCollectionViewCellModel(title: "Salve suas tarefas", description: "Este app serve para salvar sua tarefas e onde essa tarefa será feita", imageName: "background"),
-        OnboardingCollectionViewCellModel(title: "Tenha paciência kkk", description: "Esse app é o rascunho do prototipo do que seria a primeira vercao, entao exercite sua abstracao kk", imageName: "background")
+        OnboardingCollectionViewCellModel(title: "Salve suas tarefas", description: "Salve sua tarefas e onde essa tarefa será feita", imageName: "background"),
+        OnboardingCollectionViewCellModel(title: "Tenha paciência kkk", description: "Esse app é o rascunho do prototipo, abstraia kk", imageName: "background")
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserDefaults.init().set(true, forKey: "olhou")
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         

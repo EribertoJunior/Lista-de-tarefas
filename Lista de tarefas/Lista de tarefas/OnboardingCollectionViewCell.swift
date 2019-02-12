@@ -10,12 +10,12 @@ import UIKit
 
 struct OnboardingCollectionViewCellModel {
     var title: String?
-    var description: String?
+    //var description: String?
     var imageName: String?
     
     init(title: String, description: String, imageName: String) {
         self.title = title
-        self.description = description
+        //self.description = description
         self.imageName = imageName
     }
 }
@@ -24,7 +24,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     // MARK: IBOutlets Variables
     
     @IBOutlet weak var titulo: UILabel!
-    @IBOutlet weak var descricaoLabel: UILabel!
+    //@IBOutlet weak var descricaoLabel: UILabel!
     @IBOutlet weak var imagemDeFundo: UIImageView!
     
     // MARK: Model Variables
@@ -37,7 +37,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
     func populate(model: OnboardingCollectionViewCellModel) {
         self.model = model
         titulo.text = model.title
-        descricaoLabel.text = model.description
+        //descricaoLabel.text = model.description
         
         if let imageName = model.imageName {
             imagemDeFundo.image = UIImage(named: imageName)

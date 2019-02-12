@@ -10,7 +10,6 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    
     var dataBase = Database.instance()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -19,6 +18,7 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let viewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController() as? OnboardingViewController {
             present(viewController, animated: true, completion: nil)
         }

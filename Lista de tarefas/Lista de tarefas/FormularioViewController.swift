@@ -54,8 +54,8 @@ class FormularioViewController: UIViewController {
 
         
         novoItem.text = tarefa?.descricao
-        var longitude = tarefa?.longitude ?? -8.0179
-        var latitude = tarefa?.latitude ?? -34.8889
+        let longitude = tarefa?.longitude ?? 0
+        let latitude = tarefa?.latitude ?? 0
 
         
         //imagemPin.
@@ -69,23 +69,28 @@ class FormularioViewController: UIViewController {
         // requesting user permission
         locationManager.requestWhenInUseAuthorization()
         
-        // creating a center zoom where the map will update
-        if let coordinates = locationManager.location?.coordinate {
-            update(coordinates: coordinates)
-        }
-        
+
         //let cordenadas = myMap.centerCoordinate
         
         // adding a annotation
-        let point = MKPointAnnotation()
-        point.title = "Local da tarefa"
-        point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        myMap.addAnnotation(point)
+        if (atualizar) {
+            let point = MKPointAnnotation()
+            point.title = "LOCAL DA TAREFA: \(tarefa!.descricao)"
+            point.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            myMap.addAnnotation(point)
+            update(coordinates: point.coordinate)
+        } else {
+            if let coordinates = locationManager.location?.coordinate {
+                update(coordinates: coordinates)
+            }
+            // start location updates
+            locationManager.startUpdatingLocation()
+        }
+
         
 
         
-        // start location updates
-        locationManager.startUpdatingLocation()
+
   
         
         myMap.showsUserLocation = true
